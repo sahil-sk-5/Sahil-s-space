@@ -41,7 +41,7 @@ T = T';
 for n=1:nt % Timestep loop
     % Compute new temperature
     Tnew = zeros(nx,1);
-    Tnew = ???
+    Tnew = inv(A)*T;
     
     % Set boundary conditions
     Tnew(1) = T(1);
