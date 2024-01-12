@@ -1,0 +1,33 @@
+clc;
+clear all;
+v = [2 0 ;0 1];
+origin = [0,0];
+
+
+figure(1);
+
+for i =1:10:360
+    g= [cosd(i) ; sind(i)];
+    
+    subplot(2,2,1)
+    plot([origin(1) g(1)],[origin(2) g(2)], 'b');
+    hold on
+    gv = v*g;
+   subplot(2,2,2)
+    hold on
+    plot([origin(1) gv(1)],[origin(2) gv(2)], 'g');
+    axis equal;
+end;
+subplot(2,2,3)
+
+[A,B] = eig(v);
+plot([origin(1) A(1,1)],[origin(2) A(2,1)], 'g');
+plot([origin(1) A(1,2)],[origin(2) A(2,2)], 'g');
+axis equal;
+hold on
+
+j =v*A(:,1);
+j2 =v*A(:,2);
+plot([origin(1) j(1,1)],[origin(2) j(2,1)], 'b');
+plot([origin(1) j2(1,1)],[origin(2) j2(2,1)], 'b');
+axis equal;
