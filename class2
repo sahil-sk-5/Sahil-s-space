@@ -1,0 +1,57 @@
+
+clear all
+close all
+
+x=[1 2 3 4 5 6 7 8];
+y=[1 5 3 7 7 11 100 11];
+
+plot(x,y,'o','MarkerFaceColor','r')
+hold on
+
+
+%err=y-ysyn
+mini=1000
+mp=0
+cp=0
+ml=0
+cl=0
+mini2=1000
+
+for mn=0.1:0.1:15
+    for cn=0.1:0.1:15
+        d=0;
+        dd=0;
+        for i=1:1:8
+            yn=mn*x(i)+cn;
+            xo=x(i);
+            d=d+(y(i)-yn)*(y(i)-yn);
+            dd=dd+abs(y(i)-yn);
+        end
+            if(d<mini)
+                mini=d;
+                mp=mn;
+                cp=cn;
+            end
+            if(dd<mini2)
+                mini2=dd;
+                ml=mn;
+                cl=cn;
+            end
+    end
+end
+mp;
+cp;
+mini;
+ml;
+cl;
+mini2;
+
+hold on
+y1=mp*x+cp;
+plot(x,y1,'r');
+hold on
+
+y2=ml*x+cl;
+plot(x,y2,'b');
+hold on
+
